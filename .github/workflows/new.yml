@@ -27,7 +27,7 @@ jobs:
 
   label-issue:
     runs-on: ubuntu-latest
-    if: github.event_name == 'issues'
+    if: ${{ github.event_name == 'issues' }}
     permissions:
       issues: write
     steps:
@@ -39,15 +39,15 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              labels:['needs-triage']
+              labels: ['needs-triage']
             })
 
   notify:
-      needs: [greetings, label-issue]
-      if: ${{ always() }}
-      runs-on: ubuntu-latest
-      steps:
-        - name: Log result
-          run: |
-            echo "Greeting status: ${{ needs.greetings.result }}"
-            echo "Label status: ${{ needs.label-issue.result }}"
+    needs: [greetings, label-issue]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log result
+        run: |
+          echo "Greeting status: ${{ needs.greetings.result }}"
+          echo "Label status: ${{ needs.label-issue.result }}"
