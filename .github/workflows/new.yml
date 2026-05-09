@@ -48,4 +48,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log result
-        run: echo "Greetings status: ${{ needs.greetings.result }} | Label issue status: ${{ needs.label-issue.result }}"
+        run: echo "Greetings status: ${{ needs.greetings.result }} , Label issue status: ${{ needs.label-issue.result }}"
