@@ -42,10 +42,12 @@ jobs:
               labels:['needs-triage']
             })
 
-  notify:
-    needs : [greetings , label-issue]
-    if : always()
+notify:
+    needs: [greetings, label-issue]
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Log result
-        run: echo "Greeting status: ${{ needs.greetings.result }}, Label status: ${{ needs.label-issue.result }}"
+        run: |
+          echo "Greeting status: ${{ needs.greetings.result }}"
+          echo "Label status: ${{ needs.label-issue.result }}"
