@@ -3,7 +3,7 @@ name: Greetings
 on:
   issues:
     types: [opened]
-  pull-requests-target:
+  pull_requests_target:
     types: [opened]
 
 jobs:
